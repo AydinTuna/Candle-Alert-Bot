@@ -12,7 +12,7 @@ const commandList: { [key: string]: string } = {
     help: "help"
 }
 
-cron.schedule('55 2, 6, 10, 14, 18, 22 * * *', () => {
+cron.schedule('*/2 * * * *', () => {
 
     for (const userId in h4AlertUsers) {
         bot.telegram.sendMessage(Number(userId), "🚀 Check the stock market, H4 candle has closed! 📈");
@@ -22,8 +22,6 @@ cron.schedule('55 2, 6, 10, 14, 18, 22 * * *', () => {
 });
 
 bot.command(commandList.h4Alert, (ctx: Context) => {
-    console.log("hi");
-
     const userId = ctx.message?.from?.id;
     if (userId) {
         h4AlertUsers[userId] = true;

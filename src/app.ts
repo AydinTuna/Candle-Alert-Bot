@@ -22,6 +22,8 @@ cron.schedule('55 2, 6, 10, 14, 18, 22 * * *', () => {
 });
 
 bot.command(commandList.h4Alert, (ctx: Context) => {
+    console.log("hi");
+
     const userId = ctx.message?.from?.id;
     if (userId) {
         h4AlertUsers[userId] = true;
